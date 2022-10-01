@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { Container } from 'react-bootstrap'
+import { Navbar } from './components/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <div className="App"></div>
+  return (
+    <>
+      <Navbar />
+      <Container className="mb-4"></Container>
+    </>
+  )
 }
 
 export default App
