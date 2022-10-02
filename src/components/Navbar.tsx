@@ -2,9 +2,12 @@ import { Container, Navbar as NavbarBs, Form, Button } from 'react-bootstrap'
 
 export function Navbar() {
   return (
-    <NavbarBs className="px-4 mt-4 shadow-sm" sticky="top">
+    <NavbarBs
+      className="px-4 mt-4 shadow-sm flex-sm-row flex-column"
+      sticky="top"
+    >
       <NavbarBs.Brand href="#">Taskify</NavbarBs.Brand>
-      <Form className="d-flex w-100">
+      <Form className="d-flex  w-100 flex-sm-row flex-column gap-2 gap-sm-0">
         <Form.Control
           type="search"
           placeholder="Enter Todo"
