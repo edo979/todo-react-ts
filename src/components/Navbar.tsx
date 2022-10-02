@@ -19,6 +19,7 @@ export function Navbar() {
 
           if (input.current == null || input.current.value === '') return
           addTask(input.current.value)
+          input.current.value = ''
         }}
       >
         <Form.Control
