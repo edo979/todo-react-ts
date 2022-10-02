@@ -6,7 +6,7 @@ type NavbarProps = {
 }
 
 export function Navbar({ addTodo }: NavbarProps) {
-  const input = useRef()
+  const input = useRef<HTMLInputElement>(null)
 
   return (
     <NavbarBs
@@ -19,6 +19,7 @@ export function Navbar({ addTodo }: NavbarProps) {
         onSubmit={(e) => {
           e.preventDefault()
 
+          if (input.current == null || input.current.value === '') return
           addTodo(input.current.value)
         }}
       >
