@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { Tab, Tabs } from 'react-bootstrap'
+import { Todo } from '../hooks/useTodos'
 
-export function TaskList() {
-  const [key, setKey] = useState<string>('home')
+type TaskListProps = {
+  todos: Todo[]
+}
+
+export function TaskList({ todos }: TaskListProps) {
+  const [key, setKey] = useState<string>('all')
 
   return (
     <Tabs
@@ -12,7 +17,11 @@ export function TaskList() {
       className="mb-3"
     >
       <Tab eventKey="all" title="all">
-        Content
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo.id}>{todo.todo}</li>
+          ))}
+        </ul>
       </Tab>
       <Tab eventKey="active" title="active">
         Content
