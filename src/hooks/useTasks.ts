@@ -9,7 +9,7 @@ function getId(): string {
   return new Date().toISOString()
 }
 
-export function useTodos() {
+export function useTasks() {
   const [todos, setTodos] = useState<Todo[]>([])
 
   const addTodo = (todo: string): void =>

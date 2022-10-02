@@ -1,12 +1,12 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { Navbar } from './components/Navbar'
-import { TaskList } from './components/TaskList'
-import { useTodos } from './hooks/useTodos'
+import { Tabs } from './components/Tabs'
+import { useTasks } from './hooks/useTasks'
 
 function App() {
-  const [todos, setTodos] = useTodos()
+  const [tasks, setTask] = useTasks()
 
-  const handleAddTodo = (todo: string): void => setTodos(todo)
+  const handleAddTodo = (task: string): void => setTask(task)
 
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
 
         <Row className="justify-content-center">
           <Col xs xl={8}>
-            <TaskList todos={todos} />
+            <Tabs tasks={tasks} />
           </Col>
         </Row>
       </Container>
