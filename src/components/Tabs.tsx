@@ -1,13 +1,8 @@
 import { useState } from 'react'
 import { TaskList } from './TaskList'
 import { Tab, Tabs as TabsBs } from 'react-bootstrap'
-import { Todo } from '../hooks/useTasks'
 
-type TabsProps = {
-  tasks: Todo[]
-}
-
-export function Tabs({ tasks }: TabsProps) {
+export function Tabs() {
   const [key, setKey] = useState<string>('all')
 
   return (
@@ -18,7 +13,7 @@ export function Tabs({ tasks }: TabsProps) {
       className="mb-3"
     >
       <Tab eventKey="all" title="all">
-        <TaskList tasks={tasks} />
+        <TaskList />
       </Tab>
       <Tab eventKey="active" title="active">
         Content

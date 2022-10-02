@@ -5,7 +5,6 @@ import { useTasks } from './hooks/useTasks'
 
 function App() {
   const [tasks, setTask] = useTasks()
-
   const handleAddTodo = (task: string): void => setTask(task)
 
   return (
@@ -19,7 +18,7 @@ function App() {
 
         <Row className="justify-content-center">
           <Col xs xl={8}>
-            <Tabs tasks={tasks} />
+            <Tabs />
           </Col>
         </Row>
       </Container>

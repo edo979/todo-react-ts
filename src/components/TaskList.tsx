@@ -1,13 +1,12 @@
-import { Todo } from '../hooks/useTasks'
-type TaskListProps = {
-  tasks: Todo[]
-}
+import { useTasks } from '../context/TasksContext'
 
-export function TaskList({ tasks }: TaskListProps) {
+export function TaskList() {
+  const { tasks } = useTasks()
+
   return (
     <ul>
       {tasks.map((task) => (
-        <li key={task.id}>{task.todo}</li>
+        <li key={task.id}>{task.task}</li>
       ))}
     </ul>
   )
