@@ -10,6 +10,7 @@ type TasksContext = {
   tasks: Task[]
   addTask: (task: string) => void
   getTasksFilter: (filterTasks: string) => (t: Task) => boolean
+  finishedTask: (task: Task) => void
 }
 
 type TasksProviderProps = {
@@ -51,12 +52,22 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
+  function finishedTask(task: Task): void {
+    setTasks((tasks) =>
+      tasks.map((t) => {
+        if (t.id === task.id) return { ...t, isDone: !t.isDone }
+        return t
+      })
+    )
+  }
+
   return (
     <TasksContext.Provider
       value={{
         addTask,
         tasks,
         getTasksFilter,
+        finishedTask,
       }}
     >
       {children}

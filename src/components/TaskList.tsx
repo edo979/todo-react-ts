@@ -6,14 +6,14 @@ type TaskListProps = {
 }
 
 export function TaskList({ filterTasks }: TaskListProps) {
-  const { tasks, getTasksFilter } = useTasks()
+  const { tasks, getTasksFilter, finishedTask } = useTasks()
   const filteredTasks = tasks.filter(getTasksFilter(filterTasks))
 
   return (
     <>
       {filteredTasks.length > 0 && (
         <ListGroup as="ul">
-          {filteredTasks.map(({ id, task }) => (
+          {filteredTasks.map(({ id, task, isDone }) => (
             <ListGroup.Item
               action
               as="li"
@@ -23,7 +23,11 @@ export function TaskList({ filterTasks }: TaskListProps) {
               <span className="me-auto">{task}</span>
 
               <ButtonGroup aria-label="Edis task">
-                <Button variant="outline-success" size="sm">
+                <Button
+                  variant="outline-success"
+                  size="sm"
+                  onClick={() => finishedTask({ id, task, isDone })}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
