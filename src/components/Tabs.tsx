@@ -13,13 +13,13 @@ export function Tabs() {
       className="mb-3"
     >
       <Tab eventKey="all" title="all">
-        <TaskList />
+        <TaskList filterTasks="all" />
       </Tab>
       <Tab eventKey="active" title="active">
-        Content
+        <TaskList filterTasks="active" />
       </Tab>
       <Tab eventKey="finished" title="finished">
-        Content
+        <TaskList filterTasks="finished" />
       </Tab>
     </TabsBs>
   )
