@@ -10,7 +10,7 @@ type TasksContext = {
   tasks: Task[]
   addTask: (task: string) => void
   getTasksFilter: (filterTasks: string) => (t: Task) => boolean
-  finishedTask: (task: Task) => void
+  finishedTask: (id: number) => void
   removeTask: (id: number) => void
 }
 
@@ -53,11 +53,11 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
-  function finishedTask(task: Task): void {
+  function finishedTask(id: number): void {
     setTasks((tasks) =>
-      tasks.map((t) => {
-        if (t.id === task.id) return { ...t, isDone: !t.isDone }
-        return t
+      tasks.map((task) => {
+        if (task.id === id) return { ...task, isDone: !task.isDone }
+        return task
       })
     )
   }

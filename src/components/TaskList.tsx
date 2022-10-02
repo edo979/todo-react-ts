@@ -26,7 +26,7 @@ export function TaskList({ filterTasks }: TaskListProps) {
                 <Button
                   variant="outline-success"
                   size="sm"
-                  onClick={() => finishedTask({ id, task, isDone })}
+                  onClick={() => finishedTask(id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
