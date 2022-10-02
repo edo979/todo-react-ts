@@ -1,12 +1,10 @@
 import { useRef } from 'react'
-import { Container, Navbar as NavbarBs, Form, Button } from 'react-bootstrap'
+import { Navbar as NavbarBs, Form, Button } from 'react-bootstrap'
+import { useTasks } from '../context/TasksContext'
 
-type NavbarProps = {
-  addTodo: (todo: string) => void
-}
-
-export function Navbar({ addTodo }: NavbarProps) {
+export function Navbar() {
   const input = useRef<HTMLInputElement>(null)
+  const { addTask } = useTasks()
 
   return (
     <NavbarBs
@@ -20,7 +18,7 @@ export function Navbar({ addTodo }: NavbarProps) {
           e.preventDefault()
 
           if (input.current == null || input.current.value === '') return
-          addTodo(input.current.value)
+          addTask(input.current.value)
         }}
       >
         <Form.Control
