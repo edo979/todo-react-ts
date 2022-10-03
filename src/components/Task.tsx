@@ -15,7 +15,8 @@ type TaskProps = {
 
 export function Task({ id, task }: TaskProps) {
   const [isEditOn, setIsEditOn] = useState<boolean>(false)
-  const { finishedTask, removeTask } = useTasks()
+  const [taskValue, setTaskValue] = useState<string>(task)
+  const { finishedTask, removeTask, editTask } = useTasks()
 
   return (
     <ListGroup.Item
@@ -31,8 +32,17 @@ export function Task({ id, task }: TaskProps) {
               placeholder="Edit task"
               aria-label="Edit task"
               aria-describedby="Edit selected task"
+              value={taskValue}
+              onChange={(e) => setTaskValue(e.target.value)}
             />
-            <Button onClick={() => setIsEditOn(false)}>Go</Button>
+            <Button
+              onClick={() => {
+                editTask(id, taskValue)
+                setIsEditOn(false)
+              }}
+            >
+              Go
+            </Button>
           </InputGroup>
         ) : (
           <span>{task}</span>

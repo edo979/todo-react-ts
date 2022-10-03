@@ -9,9 +9,10 @@ type Task = {
 type TasksContext = {
   tasks: Task[]
   addTask: (task: string) => void
-  getTasksFilter: (filterTasks: string) => (t: Task) => boolean
+  editTask: (id: number, editedTask: string) => void
   finishedTask: (id: number) => void
   removeTask: (id: number) => void
+  getTasksFilter: (filterTasks: string) => (t: Task) => boolean
 }
 
 type TasksProviderProps = {
@@ -35,6 +36,17 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
   function addTask(task: string): void {
     setTasks((tasks) => [...tasks, { id: getId(tasks), task, isDone: false }])
+  }
+
+  function editTask(id: number, editedTask: string): void {
+    setTasks((tasks) =>
+      tasks.map((t) => {
+        if (t.id === id) {
+          return { ...t, task: editedTask }
+        }
+        return t
+      })
+    )
   }
 
   function getTasksFilter(filterTasks: string): (t: Task) => boolean {
@@ -69,8 +81,9 @@ export function TasksProvider({ children }: TasksProviderProps) {
   return (
     <TasksContext.Provider
       value={{
-        addTask,
         tasks,
+        addTask,
+        editTask,
         getTasksFilter,
         finishedTask,
         removeTask,
