@@ -27,23 +27,25 @@ export function Task({ id, task }: TaskProps) {
     >
       <div className="w-100">
         {isEditOn ? (
-          <InputGroup className="mb-3 mt-3">
-            <Form.Control
-              placeholder="Edit task"
-              aria-label="Edit task"
-              aria-describedby="Edit selected task"
-              value={taskValue}
-              onChange={(e) => setTaskValue(e.target.value)}
-            />
-            <Button
-              onClick={() => {
-                editTask(id, taskValue)
-                setIsEditOn(false)
-              }}
-            >
-              Go
-            </Button>
-          </InputGroup>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault()
+
+              editTask(id, taskValue)
+              setIsEditOn(false)
+            }}
+          >
+            <InputGroup className="mb-3 mt-3">
+              <Form.Control
+                placeholder="Edit task"
+                aria-label="Edit task"
+                aria-describedby="Edit selected task"
+                value={taskValue}
+                onChange={(e) => setTaskValue(e.target.value)}
+              />
+              <Button type="submit">Go</Button>
+            </InputGroup>
+          </Form>
         ) : (
           <span>{task}</span>
         )}
