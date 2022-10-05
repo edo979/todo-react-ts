@@ -1,6 +1,6 @@
 import { ListGroup } from 'react-bootstrap'
 import { useTasks } from '../context/TasksContext'
-import { Task } from './Task'
+import { Task } from './Task/Task'
 
 type TaskListProps = {
   filterTasks: string
