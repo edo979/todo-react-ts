@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 type Task = {
   id: number
@@ -32,7 +33,7 @@ export function useTasks() {
 }
 
 export function TasksProvider({ children }: TasksProviderProps) {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useLocalStorage<Task[]>('taskify-app', [])
 
   function addTask(task: string): void {
     setTasks((tasks) => [...tasks, { id: getId(tasks), task, isDone: false }])
